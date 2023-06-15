@@ -1,0 +1,10 @@
+@hostname=localhost
+@port=7289
+@host={{hostname}}:{{port}}
+
+@roleId=2
+@rolename=Admin
+###
+GET https://{{host}}/api/Roles/RoleId/{{roleId}}
+###
+GET https://{{host}}/api/Roles/RoleName/{{rolename}}

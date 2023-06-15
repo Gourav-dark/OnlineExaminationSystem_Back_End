@@ -1,0 +1,62 @@
+@hostname=localhost
+@port=7289
+@host={{hostname}}:{{port}}
+@contentType = application/json
+@accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJhZG1pbkBnbWFpbC5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbiIsImV4cCI6MTY4Njc0MjkwNiwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzA2MCIsImF1ZCI6Imh0dHBzOi8vbG9jYWxob3N0OjcwNjAifQ.oXov5HJFpFfGJcpw3Zi4WtxaTCQUB82FQXhu-QEy72w
+@Id=ec94c937-58a5-48b8-0d8b-08db6cb8df7b
+@Sid=b520eba5-14a6-4927-af8e-6e071d9189cf
+@Eid=9e4cf4ae-0ef1-4453-be3b-2308c26c7415
+
+#GEt all Question List
+GET https://{{host}}/api/Questions/AllQuestions
+Authorization: Bearer {{accessToken}}
+###
+#Get Question By Question List
+GET https://{{host}}/api/Questions/FindQuestion/{{Id}}
+Authorization: Bearer {{accessToken}}
+###
+# list of Question by Subject Id
+GET https://{{host}}/api/Questions/QuestionsListBySubject/{{Sid}}
+Authorization: Bearer {{accessToken}}
+
+###
+#list of Question By Examiner
+GET https://{{host}}/api/Questions/QuestionsListByExaminer/{{Eid}}
+Authorization: Bearer {{accessToken}}
+###
+#Add Question Details
+# Add Question by Subject and Examiner Id
+POST https://{{host}}/api/Questions/AddQuestion?Sid={{Sid}}&Eid={{Eid}}
+Content-Type: {{contentType}}
+Authorization: Bearer {{accessToken}}
+
+{
+  "questionSet": 1,
+  "questionTitle": "string",
+  "option_A": "string",
+  "option_B": "string",
+  "option_C": "string",
+  "option_D": "string",
+  "correctOption": "A",
+  "mark": 0
+}
+###
+#Update Detils Question
+PUT https://{{host}}/api/Questions/UpdateQuestion/{{Id}}
+Content-Type: {{contentType}}
+Authorization: Bearer {{accessToken}}
+
+{
+  "questionSet": 1,
+  "questionTitle": "string",
+  "option_A": "string",
+  "option_B": "string",
+  "option_C": "string",
+  "option_D": "string",
+  "correctOption": "C",
+  "mark": 0
+}
+###
+#Delete Question
+DELETE https://{{host}}/api/Questions/DeleteQuestion/{{Id}}
+Authorization: Bearer {{accessToken}}

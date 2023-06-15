@@ -1,0 +1,48 @@
+@hostname=localhost
+@port=7289
+@host={{hostname}}:{{port}}
+@contentType = application/json
+@accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJhZG1pbkBnbWFpbC5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbiIsImV4cCI6MTY4Njc0MjkwNiwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzA2MCIsImF1ZCI6Imh0dHBzOi8vbG9jYWxob3N0OjcwNjAifQ.oXov5HJFpFfGJcpw3Zi4WtxaTCQUB82FQXhu-QEy72w
+
+@Id=5681cb66-2662-4082-be87-08db6cbadff2
+@Sid=9e4cf4ae-0ef1-4453-be3b-2308c26c7415
+@Eid=7ac40290-171d-4a45-9583-e676c2adc92a
+#list of Result
+GET https://{{host}}/api/Results/ResultsList
+Authorization: Bearer {{accessToken}}
+
+###
+#Result by result ID
+GET  https://{{host}}/api/Results/ResultById/{{Id}}
+Authorization: Bearer {{accessToken}}
+
+###
+#Result by student and exam id
+#not user Of This
+###GET  https://{{host}}/api/Results/ResultByStudentIdandExamId?sid={sid}&eid={eid}
+
+###
+#Result list by Student
+GET  https://{{host}}/api/Results/ResultByStudentId/{{Sid}}
+Authorization: Bearer {{accessToken}}
+
+###
+#Result list by Exam
+GET  https://{{host}}/api/Results/ResultByExamId/{{Eid}}
+Authorization: Bearer {{accessToken}}
+
+###
+#Add Result
+POST https://{{host}}/api/Results/AddResult?sId={{Sid}}&eId={{Eid}}
+Content-Type: {{contentType}}
+Authorization: Bearer {{accessToken}}
+
+{
+  "totalMarks": 0,
+  "marksObtained": 0,
+  "obtainedPercentage": 0,
+  "gradeObtained": "A+"
+}
+###
+DELETE  https://{{host}}/api/Results/DeleteResult/{{Id}}
+Authorization: Bearer {{accessToken}}

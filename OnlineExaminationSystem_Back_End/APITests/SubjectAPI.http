@@ -1,0 +1,41 @@
+@hostname=localhost
+@port=7289
+@host={{hostname}}:{{port}}
+@contentType = {{contentType}}
+@accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJhZG1pbkBnbWFpbC5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbiIsImV4cCI6MTY4Njc0MjkwNiwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzA2MCIsImF1ZCI6Imh0dHBzOi8vbG9jYWxob3N0OjcwNjAifQ.oXov5HJFpFfGJcpw3Zi4WtxaTCQUB82FQXhu-QEy72w
+@Cid=8676d2c9-a1d7-47cd-b087-4377a557a573
+@Id=b520eba5-14a6-4927-af8e-6e071d9189cf
+#All subject List
+GET https://{{host}}/api/Subjects/AllSubjectlist
+Authorization: Bearer {{accessToken}}
+###
+#Subject List by Course Id
+GET https://{{host}}/api/Subjects/subjectlistbycourse/{{Cid}}
+Authorization: Bearer {{accessToken}}
+###
+#Subject Details By subject Id
+GET https://{{host}}/api/Subjects/FindSubject/{{Id}}
+Authorization: Bearer {{accessToken}}
+###
+#Add Subject using Course Id
+POST https://{{host}}/api/Subjects/AddSubject/{{Cid}}
+Content-Type: {{contentType}}
+Authorization: Bearer {{accessToken}}
+
+{
+  "subjectCode": "DBMS-801",
+  "subjectName": "DBMS"
+}
+###
+#Update Course Details
+PUT https://{{host}}/api/Subjects/Update/{{Id}}
+Content-Type: {{contentType}}
+Authorization: Bearer {{accessToken}}
+
+{
+  "subjectCode": "DSA-701A",
+  "subjectName": "Data"
+}
+###
+#Delete Subject
+DELETE https://{{host}}/api/Subjects/Delete/{id}

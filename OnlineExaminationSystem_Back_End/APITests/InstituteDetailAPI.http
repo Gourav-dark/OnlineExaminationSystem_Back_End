@@ -1,0 +1,83 @@
+@hostname=localhost
+@port=7289
+@host={{hostname}}:{{port}}
+@contentType = application/json
+@accessToken=""
+@Id=4
+@Instname=Online Examination System
+#get list of all institute
+GET https://{{host}}/api/InstituteDetails/InstituteList
+###
+#correct Name
+GET https://{{host}}/api/InstituteDetails/SearchInstituteName/{{Instname}}
+#register Institute Details
+###
+POST https://{{host}}/api/InstituteDetails/RegisterInstitute
+content-type: {{contentType}}
+
+{
+  "instituteName": "Online Examination System",
+  "location": "Virtual",
+  "city": "Virtual",
+  "postalCode": "000000",
+  "state": "Virtual",
+  "country": "India"
+}
+###
+#register Institute Details
+POST https://{{host}}/api/InstituteDetails/RegisterInstitute
+content-type: {{contentType}}
+
+{
+  "instituteName": "Future Institute of Engineering and Management",
+  "location": "Sonarpur Station Road",
+  "city": "Kolkata",
+  "postalCode": "700150",
+  "state": "West Bengal",
+  "country": "India"
+}
+###
+POST https://{{host}}/api/InstituteDetails/RegisterInstitute
+Content-Type: {{contentType}}
+
+{
+  "instituteName": "Techno Main Salt Lake",
+  "location": "Sector-V",
+  "city": "Kolkata",
+  "postalCode": "700091",
+  "state": "West Bengal",
+  "country": "India"
+}
+
+###
+POST https://{{host}}/api/InstituteDetails/RegisterInstitute
+Content-Type: {{contentType}}
+
+{
+  "instituteName": "B.P. Poddar Institute of Management and Technology",
+  "location": "VIP Road",
+  "city": "Kolkata",
+  "postalCode": "700052",
+  "state": "West Bengal",
+  "country": "India"
+}
+
+###Updata Institute Details
+#updtae details id at the end
+PUT https://{{host}}/api/InstituteDetails/UpdateInstitute/{{Id}}
+Content-Type: {{contentType}}
+Authorization: Bearer {{accessToken}}
+
+{
+  "instituteName": "Future Institute of Engineering and Management",
+  "location": "Sonarpur Station Road",
+  "city": "Kolkata",
+  "postalCode": "700150",
+  "state": "West Bengal",
+  "country": "India"
+}
+
+###Delete Institute Details
+#id at end
+DELETE https://{{host}}/api/InstituteDetails/DeleteInstituteDetails/{{Id}}
+Authorization: Bearer {{accessToken}}

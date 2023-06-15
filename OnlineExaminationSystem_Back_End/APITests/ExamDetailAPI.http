@@ -1,0 +1,51 @@
+@hostname=localhost
+@port=7289
+@host={{hostname}}:{{port}}
+@contentType = application/json
+@accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJhZG1pbkBnbWFpbC5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbiIsImV4cCI6MTY4Njc0MjkwNiwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzA2MCIsImF1ZCI6Imh0dHBzOi8vbG9jYWxob3N0OjcwNjAifQ.oXov5HJFpFfGJcpw3Zi4WtxaTCQUB82FQXhu-QEy72w
+@Id=ea21a0ea-fa66-4898-c723-08db6cba2583
+@Sid=b520eba5-14a6-4927-af8e-6e071d9189cf
+
+#list of all exam
+GET https://{{host}}/api/ExamDetails/AllExamDetailsList
+Authorization: Bearer {{accessToken}}
+
+###
+#Exam details list by subject ID
+GET https://{{host}}/api/ExamDetails/ExamDetailsListBySubject/{{Sid}}
+Authorization: Bearer {{accessToken}}
+###
+#Find Exam
+GET https://{{host}}/api/ExamDetails/ExamDetail/{{Id}}
+Authorization: Bearer {{accessToken}}
+###
+#add Exam
+POST https://{{host}}/api/ExamDetails/AddExamDetail/{{Sid}}
+Content-Type: {{contentType}}
+Authorization: Bearer {{accessToken}}
+
+{
+  "examName": "string",
+  "examTime": "2023-06-10T13:51:24.426Z",
+  "duration": 0,
+  "noOfQuestion": 0,
+  "totalMark": 0
+}
+###
+#
+PUT https://{{host}}/api/ExamDetails/UpdateExamDetail/{{Id}}
+Content-Type: {{contentType}}
+Authorization: Bearer {{accessToken}}
+
+{
+  "examName": "abc",
+  "examTime": "2023-06-10T13:51:24.426Z",
+  "duration": 0,
+  "noOfQuestion": 0,
+  "totalMark": 0
+}
+
+###
+#Delete 
+DELETE https://{{host}}/api/ExamDetails/DeleteExamDetail/{{Id}}
+Authorization: Bearer {{accessToken}}

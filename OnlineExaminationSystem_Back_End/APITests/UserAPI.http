@@ -1,0 +1,99 @@
+@hostname=localhost
+@port=7289
+@host={{hostname}}:{{port}}
+@contentType = application/json
+@accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJhZG1pbkBnbWFpbC5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbiIsImV4cCI6MTY4NjgzMjIxNiwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzI4OSIsImF1ZCI6Imh0dHBzOi8vbG9jYWxob3N0OjcyODkifQ.nE8tEi2SR3p1GgcncYqA4ern3QJgdr-bgoSw1ujRrvI
+
+
+@Id=11c71beb-bde7-46e0-5725-08db6d833c1b
+@Iid=2
+@roleId=4
+
+#all user list
+GET https://{{host}}/api/Users/Userlist
+Authorization: Bearer {{accessToken}}
+
+###
+#userlist by Institute Id
+GET https://{{host}}/api/Users/UserlistByInstituteId/{{Iid}}
+Authorization: Bearer {{accessToken}}
+###
+#find user by user ID 
+GET https://{{host}}/api/Users/UserFind/{{Id}}
+Authorization: Bearer {{accessToken}}
+
+###
+#Sign UP in data base
+POST https://{{host}}/api/Users/Signup?roleId={{roleId}}&instituteId={{Iid}}
+Content-Type: {{contentType}}
+
+{
+  "fname": "Student",
+  "lname": "User",
+  "gender": "M",
+  "dob": "23-11-1998",
+  "email": "student@gmail.com",
+  "phoneNumber": "8562713396",
+  "password": "12345",
+  "confirmPassword": "12345"
+}
+###
+#Sign UP in data base //Admin
+POST https://{{host}}/api/Users/Signup?roleId=1&instituteId=1
+Content-Type: {{contentType}}
+
+{
+  "fname": "Admin",
+  "lname": "User",
+  "gender": "M",
+  "dob": "23-07-1990",
+  "email": "admin@gmail.com",
+  "phoneNumber": "9080765634",
+  "password": "Admin@123",
+  "confirmPassword": "Admin@123"
+}
+###
+#Update User Deatails
+PUT https://{{host}}/api/Users/Update/{{Id}}
+Content-Type: {{contentType}}
+Authorization: Bearer {{accessToken}}
+
+{
+  "fname": "Admin",
+  "lname": "User",
+  "gender": "M",
+  "dob": "23-07-1990",
+  "email": "admin@gmail.com",
+  "phoneNumber": "9080765634",
+  "password": "Admin@123",
+  "confirmPassword": "Admin@123"
+}
+###
+#DELETE user
+DELETE https://{{host}}/api/Users/Delete/{{Id}}
+Authorization: Bearer {{accessToken}}
+
+#Login in
+POST https://{{host}}/api/Users/Login
+Content-Type: {{contentType}}
+
+{
+  "Email": "admin@gmail.com",
+  "password": "Admin@123"
+}
+
+###
+#this for Activate Password
+PUT https://{{host}}/api/Users/ActivatedStatus/{{Id}}
+Authorization: Bearer {{accessToken}}
+###
+#update Password Only
+#PUT https://{{host}}/api/Users/UpdatePassword/{userid}
+#Content-Type: {{contentType}}
+#Accept-Language: en-US,en;q=0.5
+#{
+#  "currentPassword": "string",
+#  "newPassword": "string"
+#}
+#Authorization: Bearer {{accessToken}}
+###

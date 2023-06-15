@@ -1,0 +1,43 @@
+@hostname=localhost
+@port=7289
+@host={{hostname}}:{{port}}
+@contentType = application/json
+@accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJhZG1pbkBnbWFpbC5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbiIsImV4cCI6MTY4NjgzMjIxNiwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzI4OSIsImF1ZCI6Imh0dHBzOi8vbG9jYWxob3N0OjcyODkifQ.nE8tEi2SR3p1GgcncYqA4ern3QJgdr-bgoSw1ujRrvI
+@Id=7e4f5b4c-8d7e-464b-0fe9-08db6d83e7b4
+@Iid=2
+###
+//get all list and auth
+GET https://{{host}}/api/Courses/AllCourseList
+Authorization: Bearer {{accessToken}}
+
+###
+#Get Courser Details
+GET https://{{host}}/api/Courses/FindCourse/{{Id}}
+
+###
+#list of Couser in That Institute
+GET https://{{host}}/api/Courses/InstituteCourses/{{Iid}}
+###
+#Add Course using Institute Id
+POST https://{{host}}/api/Courses/AddCourse/{{Iid}}
+Content-Type: {{contentType}}
+Authorization: Bearer {{accessToken}}
+
+{
+  "courseName": "B.Tech",
+  "departmentName": "CSE"
+}
+###
+#update Course Details
+PUT https://{{host}}/api/Courses/Update/{{Id}}
+Content-Type: {{contentType}}
+Authorization: Bearer {{accessToken}}
+
+{
+  "courseName": "B.Tech",
+  "departmentName": "CSE"
+}
+###
+#Delete Course Details
+DELETE https://{{host}}/api/Courses/Delete/{{Id}}}
+Authorization: Bearer {{accessToken}}

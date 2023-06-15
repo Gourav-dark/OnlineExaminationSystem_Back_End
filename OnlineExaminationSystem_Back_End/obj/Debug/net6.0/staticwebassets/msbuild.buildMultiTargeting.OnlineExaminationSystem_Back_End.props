@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\OnlineExaminationSystem_Back_End.props" />
+</Project>
