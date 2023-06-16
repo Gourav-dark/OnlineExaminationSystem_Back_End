@@ -1,10 +1,12 @@
 @hostname=localhost
 @port=7289
 @host={{hostname}}:{{port}}
-@contentType = {{contentType}}
-@accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJhZG1pbkBnbWFpbC5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbiIsImV4cCI6MTY4Njc0MjkwNiwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzA2MCIsImF1ZCI6Imh0dHBzOi8vbG9jYWxob3N0OjcwNjAifQ.oXov5HJFpFfGJcpw3Zi4WtxaTCQUB82FQXhu-QEy72w
-@Cid=8676d2c9-a1d7-47cd-b087-4377a557a573
-@Id=b520eba5-14a6-4927-af8e-6e071d9189cf
+@contentType = application/json
+@accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJhZG1pbkBnbWFpbC5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbiIsImV4cCI6MTY4NjkxOTAxMiwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzI4OSIsImF1ZCI6Imh0dHBzOi8vbG9jYWxob3N0OjcyODkifQ.iwJyUfIIsfU_55Bpd6li_g5HoFRxhwXuy7M1sJ214tA
+
+
+@Cid=7e4f5b4c-8d7e-464b-0fe9-08db6d83e7b4
+@Id=cf197054-8e3c-43da-4fa4-08db6e46cd09
 #All subject List
 GET https://{{host}}/api/Subjects/AllSubjectlist
 Authorization: Bearer {{accessToken}}
@@ -23,8 +25,8 @@ Content-Type: {{contentType}}
 Authorization: Bearer {{accessToken}}
 
 {
-  "subjectCode": "DBMS-801",
-  "subjectName": "DBMS"
+  "subjectCode": "DSA-801",
+  "subjectName": "Data"
 }
 ###
 #Update Course Details
@@ -33,7 +35,7 @@ Content-Type: {{contentType}}
 Authorization: Bearer {{accessToken}}
 
 {
-  "subjectCode": "DSA-701A",
+  "subjectCode": "DSA",
   "subjectName": "Data"
 }
 ###

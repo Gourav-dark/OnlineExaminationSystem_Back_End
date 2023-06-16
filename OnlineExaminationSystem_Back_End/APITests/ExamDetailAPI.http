@@ -2,9 +2,11 @@
 @port=7289
 @host={{hostname}}:{{port}}
 @contentType = application/json
-@accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJhZG1pbkBnbWFpbC5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbiIsImV4cCI6MTY4Njc0MjkwNiwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzA2MCIsImF1ZCI6Imh0dHBzOi8vbG9jYWxob3N0OjcwNjAifQ.oXov5HJFpFfGJcpw3Zi4WtxaTCQUB82FQXhu-QEy72w
-@Id=ea21a0ea-fa66-4898-c723-08db6cba2583
-@Sid=b520eba5-14a6-4927-af8e-6e071d9189cf
+@accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJhZG1pbkBnbWFpbC5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbiIsImV4cCI6MTY4NjkxNjAyNSwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzI4OSIsImF1ZCI6Imh0dHBzOi8vbG9jYWxob3N0OjcyODkifQ.kkYGsVU-b7QqW2CgkVEfNiZlpNwzNuO4rvQEu4TDEc0
+
+
+@Id=1e619014-18a6-495f-50b2-08db6e473a7f
+@Sid=cf197054-8e3c-43da-4fa4-08db6e46cd09
 
 #list of all exam
 GET https://{{host}}/api/ExamDetails/AllExamDetailsList
@@ -25,11 +27,12 @@ Content-Type: {{contentType}}
 Authorization: Bearer {{accessToken}}
 
 {
-  "examName": "string",
-  "examTime": "2023-06-10T13:51:24.426Z",
-  "duration": 0,
-  "noOfQuestion": 0,
-  "totalMark": 0
+  "examName": "Sem-2",
+  "date": "08-12-2023",
+  "time": "13:30",
+  "duration": 20,
+  "noOfQuestion": 20,
+  "totalMark": 40
 }
 ###
 #
@@ -38,11 +41,12 @@ Content-Type: {{contentType}}
 Authorization: Bearer {{accessToken}}
 
 {
-  "examName": "abc",
-  "examTime": "2023-06-10T13:51:24.426Z",
-  "duration": 0,
-  "noOfQuestion": 0,
-  "totalMark": 0
+  "examName": "Sem-1",
+  "date": "08-12-2023",
+  "time": "13:30",
+  "duration": 20,
+  "noOfQuestion": 20,
+  "totalMark": 40
 }
 
 ###

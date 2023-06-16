@@ -2,7 +2,7 @@
 @port=7289
 @host={{hostname}}:{{port}}
 @contentType = application/json
-@accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJhZG1pbkBnbWFpbC5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbiIsImV4cCI6MTY4NjgzMjIxNiwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzI4OSIsImF1ZCI6Imh0dHBzOi8vbG9jYWxob3N0OjcyODkifQ.nE8tEi2SR3p1GgcncYqA4ern3QJgdr-bgoSw1ujRrvI
+@accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJhZG1pbkBnbWFpbC5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbiIsImV4cCI6MTY4NjkxNjAyNSwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzI4OSIsImF1ZCI6Imh0dHBzOi8vbG9jYWxob3N0OjcyODkifQ.kkYGsVU-b7QqW2CgkVEfNiZlpNwzNuO4rvQEu4TDEc0
 
 
 @Id=11c71beb-bde7-46e0-5725-08db6d833c1b
@@ -73,6 +73,7 @@ Authorization: Bearer {{accessToken}}
 DELETE https://{{host}}/api/Users/Delete/{{Id}}
 Authorization: Bearer {{accessToken}}
 
+###
 #Login in
 POST https://{{host}}/api/Users/Login
 Content-Type: {{contentType}}

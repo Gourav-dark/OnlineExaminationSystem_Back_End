@@ -27,6 +27,9 @@ namespace OnlineExaminationSystem_Back_End_DAL.Models.DBModels
         [MaxLength(1)]
         public char Gender { get; set; }
 
+        //Image of Users
+        public string ImageUrl { get; set; }
+
         [Required]
         [Column(TypeName = "date")]
         public DateTime DOB { get; set; }

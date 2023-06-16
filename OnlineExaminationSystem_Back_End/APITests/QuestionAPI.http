@@ -2,10 +2,11 @@
 @port=7289
 @host={{hostname}}:{{port}}
 @contentType = application/json
-@accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJhZG1pbkBnbWFpbC5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbiIsImV4cCI6MTY4Njc0MjkwNiwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzA2MCIsImF1ZCI6Imh0dHBzOi8vbG9jYWxob3N0OjcwNjAifQ.oXov5HJFpFfGJcpw3Zi4WtxaTCQUB82FQXhu-QEy72w
+@accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJhZG1pbkBnbWFpbC5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbiIsImV4cCI6MTY4NjkxNjAyNSwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzI4OSIsImF1ZCI6Imh0dHBzOi8vbG9jYWxob3N0OjcyODkifQ.kkYGsVU-b7QqW2CgkVEfNiZlpNwzNuO4rvQEu4TDEc0
+
 @Id=ec94c937-58a5-48b8-0d8b-08db6cb8df7b
-@Sid=b520eba5-14a6-4927-af8e-6e071d9189cf
-@Eid=9e4cf4ae-0ef1-4453-be3b-2308c26c7415
+@Sid=cf197054-8e3c-43da-4fa4-08db6e46cd09
+@Eid=4e890945-889e-4349-5724-08db6d833c1b
 
 #GEt all Question List
 GET https://{{host}}/api/Questions/AllQuestions
@@ -32,13 +33,30 @@ Authorization: Bearer {{accessToken}}
 
 {
   "questionSet": 1,
-  "questionTitle": "string",
-  "option_A": "string",
-  "option_B": "string",
-  "option_C": "string",
-  "option_D": "string",
-  "correctOption": "A",
-  "mark": 0
+  "questionTitle": "What is the full form of DBMS?",
+  "option_A": "Data of Binary Management System",
+  "option_B": "Database Management System",
+  "option_C": "Database Management Service",
+  "option_D": "Data Backup Management System",
+  "correctOption": "B",
+  "mark": 4
+}
+###
+#Add Question Details
+# Add Question by Subject and Examiner Id
+POST https://{{host}}/api/Questions/AddQuestion?Sid={{Sid}}&Eid={{Eid}}
+Content-Type: {{contentType}}
+Authorization: Bearer {{accessToken}}
+
+{
+  "questionSet": 1,
+  "questionTitle": "Who created the first DBMS?",
+  "option_A": "Edgar Frank Codd",
+  "option_B": "Charles Bachman",
+  "option_C": "Charles Babbage",
+  "option_D": "Sharon B. Codd",
+  "correctOption": "B",
+  "mark": 4
 }
 ###
 #Update Detils Question
