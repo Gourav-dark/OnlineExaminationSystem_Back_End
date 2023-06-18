@@ -7,7 +7,7 @@ namespace OnlineExaminationSystem_Back_End_DAL.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class RolesController : Controller
+    public class RolesController : ControllerBase
     {
         private readonly DatabaseContext _dbContext;
         public RolesController(DatabaseContext context)

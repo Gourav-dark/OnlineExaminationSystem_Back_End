@@ -15,7 +15,7 @@ namespace OnlineExaminationSystem_Back_End_DAL.Models.DBModels
         public Guid Id { get; set; }
 
         [Required]
-        public QSet QuestionSet { get; set; } = QSet.Set_1;
+        public QSet QuestionSet { get; set; }
 
         [Required]
         [StringLength(1500)]

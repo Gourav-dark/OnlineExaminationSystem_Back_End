@@ -58,7 +58,8 @@ namespace OnlineExaminationSystem_Back_End.Migrations
                         name: "FK_Courses_InstituteDetails_InstituteId",
                         column: x => x.InstituteId,
                         principalTable: "InstituteDetails",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -69,6 +70,7 @@ namespace OnlineExaminationSystem_Back_End.Migrations
                     Fname = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Lname = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Gender = table.Column<string>(type: "CHAR(1)", maxLength: 1, nullable: false),
+                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DOB = table.Column<DateTime>(type: "date", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     PhoneNumber = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
@@ -84,12 +86,14 @@ namespace OnlineExaminationSystem_Back_End.Migrations
                         name: "FK_Users_InstituteDetails_InstituteId",
                         column: x => x.InstituteId,
                         principalTable: "InstituteDetails",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Users_Roles_RoleId",
                         column: x => x.RoleId,
                         principalTable: "Roles",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -108,7 +112,8 @@ namespace OnlineExaminationSystem_Back_End.Migrations
                         name: "FK_Subjects_Courses_CourseId",
                         column: x => x.CourseId,
                         principalTable: "Courses",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -132,7 +137,8 @@ namespace OnlineExaminationSystem_Back_End.Migrations
                         name: "FK_EnrollStudents_Users_StudentId",
                         column: x => x.StudentId,
                         principalTable: "Users",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -155,7 +161,8 @@ namespace OnlineExaminationSystem_Back_End.Migrations
                         name: "FK_ExamDetails_Subjects_SubjectId",
                         column: x => x.SubjectId,
                         principalTable: "Subjects",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -181,7 +188,8 @@ namespace OnlineExaminationSystem_Back_End.Migrations
                         name: "FK_Questions_Subjects_SubjectId",
                         column: x => x.SubjectId,
                         principalTable: "Subjects",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Questions_Users_ExaminerId",
                         column: x => x.ExaminerId,
@@ -213,7 +221,8 @@ namespace OnlineExaminationSystem_Back_End.Migrations
                         name: "FK_Results_Users_StudentId",
                         column: x => x.StudentId,
                         principalTable: "Users",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(

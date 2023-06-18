@@ -12,8 +12,8 @@ using OnlineExaminationSystem_Back_End_DAL.DbContexts;
 namespace OnlineExaminationSystem_Back_End.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20230616033430_ImageAdd")]
-    partial class ImageAdd
+    [Migration("20230618041909_CreateDatabase")]
+    partial class CreateDatabase
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -356,7 +356,7 @@ namespace OnlineExaminationSystem_Back_End.Migrations
                     b.HasOne("OnlineExaminationSystem_Back_End_DAL.Models.DBModels.InstituteDetail", "InstituteDetail")
                         .WithMany("Courses")
                         .HasForeignKey("InstituteId")
-                        .OnDelete(DeleteBehavior.ClientCascade)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("InstituteDetail");
@@ -373,7 +373,7 @@ namespace OnlineExaminationSystem_Back_End.Migrations
                     b.HasOne("OnlineExaminationSystem_Back_End_DAL.Models.DBModels.User", "Student")
                         .WithOne("EnrollStudent")
                         .HasForeignKey("OnlineExaminationSystem_Back_End_DAL.Models.DBModels.EnrollStudent", "StudentId")
-                        .OnDelete(DeleteBehavior.ClientCascade)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Course");
@@ -386,7 +386,7 @@ namespace OnlineExaminationSystem_Back_End.Migrations
                     b.HasOne("OnlineExaminationSystem_Back_End_DAL.Models.DBModels.Subject", "Subject")
                         .WithMany("ExamDetails")
                         .HasForeignKey("SubjectId")
-                        .OnDelete(DeleteBehavior.ClientCascade)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Subject");
@@ -403,7 +403,7 @@ namespace OnlineExaminationSystem_Back_End.Migrations
                     b.HasOne("OnlineExaminationSystem_Back_End_DAL.Models.DBModels.Subject", "Subject")
                         .WithMany("Questions")
                         .HasForeignKey("SubjectId")
-                        .OnDelete(DeleteBehavior.ClientCascade)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Examiner");
@@ -422,7 +422,7 @@ namespace OnlineExaminationSystem_Back_End.Migrations
                     b.HasOne("OnlineExaminationSystem_Back_End_DAL.Models.DBModels.User", "Student")
                         .WithMany("Results")
                         .HasForeignKey("StudentId")
-                        .OnDelete(DeleteBehavior.ClientCascade)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("ExamDetail");
@@ -435,7 +435,7 @@ namespace OnlineExaminationSystem_Back_End.Migrations
                     b.HasOne("OnlineExaminationSystem_Back_End_DAL.Models.DBModels.Course", "Course")
                         .WithMany("Subjects")
                         .HasForeignKey("CourseId")
-                        .OnDelete(DeleteBehavior.ClientCascade)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Course");
@@ -446,13 +446,12 @@ namespace OnlineExaminationSystem_Back_End.Migrations
                     b.HasOne("OnlineExaminationSystem_Back_End_DAL.Models.DBModels.InstituteDetail", "InstituteDetail")
                         .WithMany("Users")
                         .HasForeignKey("InstituteId")
-                        .OnDelete(DeleteBehavior.ClientCascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("OnlineExaminationSystem_Back_End_DAL.Models.DBModels.Role", "Role")
                         .WithMany("Users")
                         .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.ClientCascade)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("InstituteDetail");

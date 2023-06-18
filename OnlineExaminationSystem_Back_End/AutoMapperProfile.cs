@@ -16,7 +16,7 @@ namespace OnlineExaminationSystem_Back_End_DAL
 
             //2.User Mapper
             CreateMap<User, ViewUser>()
-                .ForMember(dest => dest.DOB, opt => opt.MapFrom(src => src.DOB.ToString()));
+                .ForMember(dest => dest.DOB, opt => opt.MapFrom(src => DateOnly.FromDateTime(src.DOB)));
             CreateMap<SignUpUser, User>()
                 .ForMember(dest => dest.Password, opt => opt.MapFrom(src => CommanFunctions.EncriptPassword(src.Password)))
                 .ForMember(dest => dest.DOB, opt => opt.MapFrom(src =>DateTime.ParseExact(src.DOB, "dd-MM-yyyy", null)));

@@ -31,7 +31,7 @@ namespace OnlineExaminationSystem_Back_End_DAL.Controllers
             {
                 return NotFound("Database is Empty");
             }
-            return Ok(await _dbContext.InstituteDetails.Select(i => _mapper.Map<ViewInstituteDetail>(i)).ToListAsync());
+            return Ok(await _dbContext.InstituteDetails.Where(i=>i.Id!=1).Select(i => _mapper.Map<ViewInstituteDetail>(i)).ToListAsync());
         }
         //Find Id by Institute Name
         [HttpGet]

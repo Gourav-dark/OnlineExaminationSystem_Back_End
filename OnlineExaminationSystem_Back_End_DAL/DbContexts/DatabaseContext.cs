@@ -22,17 +22,25 @@ namespace OnlineExaminationSystem_Back_End_DAL.DbContexts
         {
             //---------Institute Details Table----------
             //One Institute hav multiple users
-            modelBuilder.Entity<InstituteDetail>()
-                .HasMany(i => i.Users)
-                .WithOne(u => u.InstituteDetail)
+            //modelBuilder.Entity<InstituteDetail>()
+            //    .HasMany(i => i.Users)
+            //    .WithOne(u => u.InstituteDetail)
+            //    .HasForeignKey(u => u.InstituteId)
+            //    .OnDelete(DeleteBehavior.Cascade);
+
+            //////////achive same using user and null value
+            modelBuilder.Entity<User>()
+                .HasOne(u => u.InstituteDetail)
+                .WithMany(i => i.Users)
                 .HasForeignKey(u => u.InstituteId)
-                .OnDelete(DeleteBehavior.ClientCascade);
+                .OnDelete(DeleteBehavior.Cascade)
+                .IsRequired(false);
             // One Institute hav multiple course
             modelBuilder.Entity<InstituteDetail>()
                 .HasMany(i => i.Courses)
                 .WithOne(c => c.InstituteDetail)
                 .HasForeignKey(c => c.InstituteId)
-                .OnDelete(DeleteBehavior.ClientCascade);
+                .OnDelete(DeleteBehavior.Cascade);
 
             //----------Role Table
             //Role have multiple uses
@@ -40,14 +48,15 @@ namespace OnlineExaminationSystem_Back_End_DAL.DbContexts
                 .HasMany(r => r.Users)
                 .WithOne(u => u.Role)
                 .HasForeignKey(u => u.RoleId)
-                .OnDelete(DeleteBehavior.ClientCascade);
+                .OnDelete(DeleteBehavior.Cascade);
 
             //-------User Table
             //if user is student than one Course Enrolled---------->
             modelBuilder.Entity<User>()
                 .HasOne(u => u.EnrollStudent)
                 .WithOne(s => s.Student)
-                .OnDelete(DeleteBehavior.ClientCascade);
+                .HasForeignKey<EnrollStudent>(u=>u.StudentId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             //if user is examiner than create many Question
             modelBuilder.Entity<User>()
@@ -60,7 +69,7 @@ namespace OnlineExaminationSystem_Back_End_DAL.DbContexts
                 .HasMany(u => u.Results)
                 .WithOne(s => s.Student)
                 .HasForeignKey(s => s.StudentId)
-                .OnDelete(DeleteBehavior.ClientCascade);
+                .OnDelete(DeleteBehavior.Cascade);
             //------------------------------------------------------->
             //----------Course table
             //one course have multiple subject----->
@@ -68,7 +77,7 @@ namespace OnlineExaminationSystem_Back_End_DAL.DbContexts
                 .HasMany(c => c.Subjects)
                 .WithOne(s => s.Course)
                 .HasForeignKey(s => s.CourseId)
-                .OnDelete(DeleteBehavior.ClientCascade);
+                .OnDelete(DeleteBehavior.Cascade);
             //one course have multiple enroll student
             modelBuilder.Entity<Course>()
                 .HasMany(c => c.EnrollStudents)
@@ -82,15 +91,15 @@ namespace OnlineExaminationSystem_Back_End_DAL.DbContexts
                 .HasMany(s => s.Questions)
                 .WithOne(q => q.Subject)
                 .HasForeignKey(q => q.SubjectId)
-                .OnDelete(DeleteBehavior.ClientCascade);
+                .OnDelete(DeleteBehavior.Cascade);
             //one Subject have many Exam
             modelBuilder.Entity<Subject>()
                 .HasMany(s => s.ExamDetails)
                 .WithOne(q => q.Subject)
                 .HasForeignKey(q => q.SubjectId)
-                .OnDelete(DeleteBehavior.ClientCascade);
+                .OnDelete(DeleteBehavior.Cascade);
 
-            //-----Exam Details
+            //-----Exam Details----Exam Details have multiple Result
             modelBuilder.Entity<ExamDetail>()
                 .HasMany(s => s.Results)
                 .WithOne(q => q.ExamDetail)

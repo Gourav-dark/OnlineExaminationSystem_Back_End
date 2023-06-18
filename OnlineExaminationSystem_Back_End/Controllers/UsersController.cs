@@ -103,7 +103,7 @@ namespace OnlineExaminationSystem_Back_End_DAL.Controllers
                 }
                 else
                 {
-                    return NotFound("Role Not Exist and ");
+                    return NotFound("Role Not Exist and Institute");
                 }
             }
             return BadRequest("Email Id Already Exist Try Another Email Id");
@@ -150,10 +150,25 @@ namespace OnlineExaminationSystem_Back_End_DAL.Controllers
             }
             return NotFound("User_Id Not Found");
         }
+        //Update Profile Image
+        [HttpPut]
+        [Route("[action]/{Id:guid}")]
+        [Authorize]
+        public async Task<ActionResult> UpdateProfilePic(Guid Id,[FromBody] string ImageUrl)
+        {
+            var user = await _dbContext.Users.FindAsync(Id);
+            if (user != null)
+            {
+                user.ImageUrl = ImageUrl;
+                await _dbContext.SaveChangesAsync();
+                return Ok("Profile Pic Update Updated");
+            }
+            return NotFound("User Id Not Correct");
+        }
 
         //UpdatePassword
         //[HttpPut]
-        //[Route("[action]")]
+        //[Route("[action]/{Id}")]
         //[Authorize]
         //public async Task<ActionResult> ForgetPassword(Guid Id, UpdatePassword PrivateDetail)
         //{

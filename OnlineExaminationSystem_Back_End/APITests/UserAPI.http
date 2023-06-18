@@ -2,10 +2,10 @@
 @port=7289
 @host={{hostname}}:{{port}}
 @contentType = application/json
-@accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJhZG1pbkBnbWFpbC5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbiIsImV4cCI6MTY4NjkxNjAyNSwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzI4OSIsImF1ZCI6Imh0dHBzOi8vbG9jYWxob3N0OjcyODkifQ.kkYGsVU-b7QqW2CgkVEfNiZlpNwzNuO4rvQEu4TDEc0
+@accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJhZG1pbkBnbWFpbC5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbiIsImV4cCI6MTY4NzA3NTMxMiwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzI4OSIsImF1ZCI6Imh0dHBzOi8vbG9jYWxob3N0OjcyODkifQ.1lSAmjwuJVMpGd4MCHbNpfIgr3SpZSgB-FjiENr3AoA
 
 
-@Id=11c71beb-bde7-46e0-5725-08db6d833c1b
+@Id=da0b0b35-6a96-43a7-3b49-08db6fb91d6d
 @Iid=2
 @roleId=4
 
@@ -33,6 +33,36 @@ Content-Type: {{contentType}}
   "gender": "M",
   "dob": "23-11-1998",
   "email": "student@gmail.com",
+  "phoneNumber": "8562713396",
+  "password": "12345",
+  "confirmPassword": "12345"
+}
+###
+#Sign UP in data base
+POST https://{{host}}/api/Users/Signup?roleId={{roleId}}&instituteId={{Iid}}
+Content-Type: {{contentType}}
+
+{
+  "fname": "Student",
+  "lname": "User",
+  "gender": "M",
+  "dob": "23-11-1998",
+  "email": "student1@gmail.com",
+  "phoneNumber": "8562713396",
+  "password": "12345",
+  "confirmPassword": "12345"
+}
+###
+#Sign UP in data base
+POST https://{{host}}/api/Users/Signup?roleId=3&instituteId={{Iid}}
+Content-Type: {{contentType}}
+
+{
+  "fname": "Examiner",
+  "lname": "User",
+  "gender": "M",
+  "dob": "23-11-1986",
+  "email": "examiner@gmail.com",
   "phoneNumber": "8562713396",
   "password": "12345",
   "confirmPassword": "12345"
@@ -68,10 +98,6 @@ Authorization: Bearer {{accessToken}}
   "password": "Admin@123",
   "confirmPassword": "Admin@123"
 }
-###
-#DELETE user
-DELETE https://{{host}}/api/Users/Delete/{{Id}}
-Authorization: Bearer {{accessToken}}
 
 ###
 #Login in
@@ -82,11 +108,18 @@ Content-Type: {{contentType}}
   "Email": "admin@gmail.com",
   "password": "Admin@123"
 }
+###
+#DELETE user
+DELETE https://{{host}}/api/Users/Delete/{{Id}}
+Authorization: Bearer {{accessToken}}
 
 ###
 #this for Activate Password
 PUT https://{{host}}/api/Users/ActivatedStatus/{{Id}}
 Authorization: Bearer {{accessToken}}
+
+
+
 ###
 #update Password Only
 #PUT https://{{host}}/api/Users/UpdatePassword/{userid}
