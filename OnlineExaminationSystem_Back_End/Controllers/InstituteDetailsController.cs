@@ -29,7 +29,7 @@ namespace OnlineExaminationSystem_Back_End_DAL.Controllers
         {
             if (_dbContext.InstituteDetails == null)
             {
-                return NotFound("Database is Empty");
+                return NotFound("Institute List not there.Ask for Institue to Create Anccount Detail");
             }
             return Ok(await _dbContext.InstituteDetails.Where(i=>i.Id!=1).Select(i => _mapper.Map<ViewInstituteDetail>(i)).ToListAsync());
         }
