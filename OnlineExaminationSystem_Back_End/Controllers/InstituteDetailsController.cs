@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using OnlineExaminationSystem_Back_End_DAL.DbContexts;
+using OnlineExaminationSystem_Back_End_DAL.Data;
 using OnlineExaminationSystem_Back_End_DAL.Models.AddOrUpdateModels;
 using OnlineExaminationSystem_Back_End_DAL.Models.DBModels;
 using OnlineExaminationSystem_Back_End_DAL.Models.ViewModels;
@@ -59,7 +59,7 @@ namespace OnlineExaminationSystem_Back_End_DAL.Controllers
                 var insDetail = _mapper.Map<InstituteDetail>(instituteDetail);
                 await _dbContext.InstituteDetails.AddAsync(insDetail);
                 await _dbContext.SaveChangesAsync();
-                return Ok("Registered Successfully");
+                return Ok(new { massage="Registered Successfully", Id=insDetail.Id});
             }
             return BadRequest("Institute Name Already Registered");
         }

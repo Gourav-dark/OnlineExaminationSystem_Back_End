@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using OnlineExaminationSystem_Back_End_DAL.DbContexts;
+using OnlineExaminationSystem_Back_End_DAL.Data;
 
 namespace OnlineExaminationSystem_Back_End_DAL.Controllers
 {

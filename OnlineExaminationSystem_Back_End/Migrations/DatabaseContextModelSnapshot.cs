@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using OnlineExaminationSystem_Back_End_DAL.DbContexts;
+using OnlineExaminationSystem_Back_End_DAL.Data;
 
 #nullable disable
 

@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using OnlineExaminationSystem_Back_End_DAL.DbContexts;
+using OnlineExaminationSystem_Back_End_DAL.Data;
 using System.Text;
 
 //Program Start---------->
@@ -10,6 +10,12 @@ using System.Text;
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
 var builder = WebApplication.CreateBuilder(args);
+
+
+//Ading Logger in my Program
+//builder.Logging.ClearProviders();
+//builder.Logging.AddConsole();
+//builder.Logging.AddDebug();
 
 //CORS Middleware Handles-->Gourav
 //Enable Cross-Origin Requests (CORS)-->Gourav

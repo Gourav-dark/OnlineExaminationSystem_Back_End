@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using OnlineExaminationSystem_Back_End_DAL.DbContexts;
+using OnlineExaminationSystem_Back_End_DAL.Data;
 using OnlineExaminationSystem_Back_End_DAL.Models.DBModels;
 using OnlineExaminationSystem_Back_End_DAL.Models.ViewModels;
 using OnlineExaminationSystem_Back_End_DAL.Models.AddOrUpdateModels;

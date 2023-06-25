@@ -3,7 +3,7 @@ using OnlineExaminationSystem_Back_End_DAL.Models.DBModels;
 using System;
 using System.Security.Policy;
 
-namespace OnlineExaminationSystem_Back_End_DAL.DbContexts
+namespace OnlineExaminationSystem_Back_End_DAL.Data
 {
     public class DatabaseContext:DbContext
     {
