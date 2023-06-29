@@ -35,11 +35,11 @@ namespace OnlineExaminationSystem_Back_End_DAL.Controllers
         }
         //Find Id by Institute Name
         [HttpGet]
-        [Route("[Action]/{name}")]
+        [Route("[Action]/{Id}")]
         [AllowAnonymous]
-        public async Task<ActionResult> SearchInstituteName(string name)
+        public async Task<ActionResult> Find(int Id)
         {
-            var instituteDetail = await _dbContext.InstituteDetails.FirstOrDefaultAsync(i => i.InstituteName==name);
+            var instituteDetail = await _dbContext.InstituteDetails.FindAsync(Id);
             if (instituteDetail == null)
             {
                 return BadRequest("Institute Name Not Found");
@@ -59,7 +59,7 @@ namespace OnlineExaminationSystem_Back_End_DAL.Controllers
                 var insDetail = _mapper.Map<InstituteDetail>(instituteDetail);
                 await _dbContext.InstituteDetails.AddAsync(insDetail);
                 await _dbContext.SaveChangesAsync();
-                return Ok(new { massage="Registered Successfully", Id=insDetail.Id});
+                return Ok(new { Message="Registered Successfully", Id=insDetail.Id});
             }
             return BadRequest("Institute Name Already Registered");
         }

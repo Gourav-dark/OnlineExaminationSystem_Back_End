@@ -94,7 +94,7 @@ namespace OnlineExaminationSystem_Back_End_DAL.Controllers
                         }
                         await _dbContext.Users.AddAsync(user);
                         await _dbContext.SaveChangesAsync();
-                        return Ok(new { Massage = "Registered Successfully", userId = user.Id });
+                        return Ok(new { Message = "Registered Successfully", userId = user.Id });
                     }
                     else
                     {
@@ -118,19 +118,19 @@ namespace OnlineExaminationSystem_Back_End_DAL.Controllers
             var Existuser = await _dbContext.Users.FindAsync(id);
             if (Existuser != null)
             {
-                if (upuser.Password == upuser.ConfirmPassword)
+                if (CommanFunctions.VerifyPassword(upuser.Password,Existuser.Password))
                 {
                     Existuser.Fname = upuser.Fname;
                     Existuser.Lname = upuser.Lname;
                     Existuser.Gender = upuser.Gender;
-                    Existuser.DOB = DateTime.ParseExact(upuser.DOB,"dd-MM-yyyy",null);
+                    Existuser.DOB = DateTime.ParseExact(upuser.DOB,"yyyy-MM-dd",null);
                     Existuser.Email = upuser.Email;
                     Existuser.PhoneNumber = upuser.PhoneNumber;
                     Existuser.Password = CommanFunctions.EncriptPassword(upuser.Password);
                     await _dbContext.SaveChangesAsync();
                     return Ok("Updated Successfully");
                 }
-                return BadRequest("Password and Confirm Password Not Match!");
+                return BadRequest("Current Password Not Correct!");
             }
             return NotFound("Invalid User Id");
         }
@@ -199,11 +199,11 @@ namespace OnlineExaminationSystem_Back_End_DAL.Controllers
                 {
                     var role = await _dbContext.Roles.FindAsync(user.RoleId);
                     string jwt = JwtTokenCreate(user.Email, role.RoleName,user.Id.ToString(),user.ImageUrl);
-                    return Ok(new { Massage = "Login Successfully", Token = jwt });
+                    return Ok(new { Message = "Login Successfully", Token = jwt });
                 }
-                return BadRequest(new { Massage="Incorrect Password" });
+                return BadRequest(new { Message="Incorrect Password" });
             }
-            return NotFound(new { Massage = "Email Id is Not Found" });
+            return NotFound(new { Message = "Email Id is Not Found" });
         }
         //JWT with Role Base Token Generate--------------------
         private string JwtTokenCreate(string email,string role,string userId,string image)
