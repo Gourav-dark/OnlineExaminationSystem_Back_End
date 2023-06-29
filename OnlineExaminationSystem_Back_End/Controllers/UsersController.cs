@@ -198,7 +198,7 @@ namespace OnlineExaminationSystem_Back_End_DAL.Controllers
                 if (CommanFunctions.VerifyPassword(loginuser.Password, user.Password))
                 {
                     var role = await _dbContext.Roles.FindAsync(user.RoleId);
-                    string jwt = JwtTokenCreate(user.Email, role.RoleName,user.Id.ToString(),user.ImageUrl);
+                    string jwt = JwtTokenCreate(user.Email, role.RoleName,user.Id.ToString(),user.InstituteId);
                     return Ok(new { Message = "Login Successfully", Token = jwt });
                 }
                 return BadRequest(new { Message="Incorrect Password" });
@@ -206,7 +206,7 @@ namespace OnlineExaminationSystem_Back_End_DAL.Controllers
             return NotFound(new { Message = "Email Id is Not Found" });
         }
         //JWT with Role Base Token Generate--------------------
-        private string JwtTokenCreate(string email,string role,string userId,string image)
+        private string JwtTokenCreate(string email,string role,string userId,int Iid)
         {
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["JWT:Key"]));
             var credential = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
@@ -214,9 +214,10 @@ namespace OnlineExaminationSystem_Back_End_DAL.Controllers
             {
                     //new Claim(ClaimTypes.Email,email),
                     new Claim("Email",email),
-                    new  Claim("Image",image),
+                    //new  Claim("Image",image),
                     new Claim("Role",role),
                     new Claim("UserId",userId),
+                    new Claim("Iid",Iid.ToString()),
                     new Claim(ClaimTypes.Role,role),
             };
             var token = new JwtSecurityToken(
