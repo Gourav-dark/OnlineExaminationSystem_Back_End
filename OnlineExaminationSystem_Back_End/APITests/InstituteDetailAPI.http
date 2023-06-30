@@ -2,9 +2,8 @@
 @port=7289
 @host={{hostname}}:{{port}}
 @contentType = application/json
-@accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJhZG1pbkBnbWFpbC5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbiIsImV4cCI6MTY4NjkxNjAyNSwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzI4OSIsImF1ZCI6Imh0dHBzOi8vbG9jYWxob3N0OjcyODkifQ.kkYGsVU-b7QqW2CgkVEfNiZlpNwzNuO4rvQEu4TDEc0
-
-@Id=4
+@accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJFbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsIlJvbGUiOiJBZG1pbiIsIlVzZXJJZCI6Ijc3MTBkM2IxLWI3Y2UtNGNiOC02MTAzLTA4ZGI3MGFmZmE1NCIsIklpZCI6IjEiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbiIsImV4cCI6MTY4ODExOTg0NCwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzI4OSIsImF1ZCI6Imh0dHBzOi8vbG9jYWxob3N0OjcyODkifQ.WvG3OJcnXUG-5Mm4HTsngjNZbyu6h_Iy-JnFWIAVx0U
+@Id=1
 @Instname=Online Examination System
 #get list of all institute
 GET https://{{host}}/api/InstituteDetails/InstituteList
@@ -70,11 +69,11 @@ Content-Type: {{contentType}}
 Authorization: Bearer {{accessToken}}
 
 {
-  "instituteName": "Future Institute of Engineering and Management",
-  "location": "Sonarpur Station Road",
-  "city": "Kolkata",
-  "postalCode": "700150",
-  "state": "West Bengal",
+ "instituteName": "Online Examination System",
+  "location": "Virtual",
+  "city": "Virtual",
+  "postalCode": "111111",
+  "state": "Virtual",
   "country": "India"
 }
 
