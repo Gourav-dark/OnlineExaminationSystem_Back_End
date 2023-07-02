@@ -71,11 +71,11 @@ namespace OnlineExaminationSystem_Back_End_DAL.Controllers
                 return NotFound();
             }
             var questionList=await _dbcontext.Questions.Where(q=>q.SubjectId==Sid).Select(q => _mapper.Map<ViewQuestion>(q)).ToListAsync();
-            if(questionList !=null)
+            if(questionList !=null && questionList.Count>0)
             {
                 return Ok(questionList);
             }
-            return NotFound("No Question in this Subject Code");
+            return NotFound("No Question in this Subject");
         }
         //list of all Question in that Create by the Examiner
         [HttpGet]
@@ -88,7 +88,7 @@ namespace OnlineExaminationSystem_Back_End_DAL.Controllers
                 return NotFound();
             }
             var questionList = await _dbcontext.Questions.Where(q => q.ExaminerId == Eid).Select(q => _mapper.Map<ViewQuestion>(q)).ToListAsync();
-            if (questionList != null)
+            if (questionList != null && questionList.Count > 0)
             {
                 return Ok(questionList);
             }
@@ -128,7 +128,7 @@ namespace OnlineExaminationSystem_Back_End_DAL.Controllers
             addquestion.ExaminerId = Eid;
             _dbcontext.Questions.Add(addquestion);
             await _dbcontext.SaveChangesAsync();
-            return Ok("Question Create in Database");
+            return Ok("Question Add in Database");
         }
         // DELETE 
         [HttpDelete]

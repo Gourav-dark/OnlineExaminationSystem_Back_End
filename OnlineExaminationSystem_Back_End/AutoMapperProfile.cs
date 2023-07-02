@@ -39,9 +39,9 @@ namespace OnlineExaminationSystem_Back_End_DAL
 
             //7.Exam Details
             CreateMap<ExamDetail, ViewExamDetail>()
-                .ForMember(dest => dest.Date, opt => opt.MapFrom(src => src.Date.ToString()));
+                .ForMember(dest => dest.Date, opt => opt.MapFrom(src => DateOnly.FromDateTime(src.Date)));
             CreateMap<AddExamDetail,ExamDetail>()
-                .ForMember(dest => dest.Date, opt => opt.MapFrom(src => DateTime.ParseExact(src.Date, "dd-MM-yyyy", null)));
+                .ForMember(dest => dest.Date, opt => opt.MapFrom(src => DateTime.ParseExact(src.Date, "yyyy-MM-dd", null)));
 
             //8.Result
             CreateMap<Result,View_Result>();

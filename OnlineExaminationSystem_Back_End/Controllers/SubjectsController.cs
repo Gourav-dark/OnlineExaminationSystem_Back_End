@@ -42,16 +42,16 @@ namespace OnlineExaminationSystem_Back_End_DAL.Controllers
         [HttpGet]
         [Authorize]
         [Route("[Action]/{Cid:guid}")]
-        public async Task<ActionResult> subjectlistbycourse(Guid CId)
+        public async Task<ActionResult> Subjectlistbycourse(Guid CId)
         {
             if (_dbContext.Subjects == null)
             {
                 return NotFound("not Found");
             }
             var Csubjectlt=await _dbContext.Subjects.Where(s=>s.CourseId==CId).Select(s => _mapper.Map<ViewSubject>(s)).ToListAsync();
-            if (Csubjectlt == null )
+            if (Csubjectlt == null || Csubjectlt.Count==0)
             {
-                return NotFound("No Subject in this Course");
+                return NotFound("No Subject in This Course !");
             }
             return Ok(Csubjectlt);
         }
@@ -108,7 +108,7 @@ namespace OnlineExaminationSystem_Back_End_DAL.Controllers
                 await _dbContext.SaveChangesAsync();
                 return Ok("Subject Added");
             }
-            return BadRequest("Subject Already there");
+            return BadRequest("Subject Already This Course.");
         }
 
         // DELETE subject

@@ -50,19 +50,20 @@ namespace OnlineExaminationSystem_Back_End_DAL.Controllers
             {
                 return NotFound();
             }
-            var subject = await _dbcontext.Subjects.FindAsync(Sid);
-            if (subject != null)
+            //var subject = await _dbcontext.Subjects.FindAsync(Sid);
+            var examlist = await _dbcontext.ExamDetails.Where(e => e.SubjectId == Sid).Select(e => _mapper.Map<ViewExamDetail>(e)).ToListAsync();
+            if (examlist !=null && examlist.Count>0)
             {
-                return Ok(await _dbcontext.ExamDetails.Where(e=>e.SubjectId==Sid).Select(e => _mapper.Map<ViewExamDetail>(e)).ToListAsync());
+                return Ok(examlist);
             }
-            return NotFound("Invalid Subject Id");
+            return NotFound("There is no exam.Please Add New.");
         }
 
         // get Exam By Id
         [HttpGet]
         [Route("[Action]/{id:guid}")]
         [Authorize]
-        public async Task<ActionResult> ExamDetail(Guid id)
+        public async Task<ActionResult> FindExamDetail(Guid id)
         {
             if (_dbcontext.ExamDetails == null)
             {
@@ -87,7 +88,7 @@ namespace OnlineExaminationSystem_Back_End_DAL.Controllers
             if(ExamDetailexist != null)
             {
                 ExamDetailexist.ExamName = examDetail.ExamName;
-                ExamDetailexist.Date = DateTime.ParseExact(examDetail.Date, "dd-MM-yyyy", null);
+                ExamDetailexist.Date = DateTime.ParseExact(examDetail.Date, "yyyy-MM-dd", null);
                 ExamDetailexist.Time = examDetail.Time;
                 ExamDetailexist.Duration = examDetail.Duration;
                 ExamDetailexist.NoOfQuestion = examDetail.NoOfQuestion;
