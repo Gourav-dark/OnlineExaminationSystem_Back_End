@@ -63,7 +63,7 @@ namespace OnlineExaminationSystem_Back_End_DAL.Controllers
         //list of all Question in that subject using SubjectID
         [HttpGet]
         [Route("[Action]/{Sid:guid}")]
-        [Authorize(Roles = "Admin,InstituteUser,Examiner")]
+        [Authorize]
         public async Task<ActionResult> QuestionsListBySubject(Guid Sid)
         {
             if (_dbcontext.Questions == null)

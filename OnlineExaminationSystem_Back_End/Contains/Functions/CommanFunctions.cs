@@ -22,5 +22,38 @@ namespace OnlineExaminationSystem_Back_End_DAL.Contains.Functions
             }
             return false;
         }
+        public static string Grade(float percentage)
+        {
+            string grade;
+            if (percentage >= 90 && percentage <= 100)
+            {
+                grade = "AA";
+            }
+            else if (percentage >= 75 && percentage < 90)
+            {
+                grade = "A+";
+            }
+            else if (percentage >= 60 && percentage < 75)
+            {
+                grade = "A";
+            }
+            else if (percentage >= 50 && percentage < 60)
+            {
+                grade = "B+";
+            }
+            else if (percentage >= 40 && percentage < 50)
+            {
+                grade = "B";
+            }
+            else if (percentage >= 30 && percentage < 40)
+            {
+                grade = "C";
+            }
+            else
+            {
+                grade = "D";
+            }
+            return grade;
+        }
     }
 }

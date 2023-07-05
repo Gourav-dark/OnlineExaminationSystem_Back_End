@@ -45,7 +45,10 @@ namespace OnlineExaminationSystem_Back_End_DAL
 
             //8.Result
             CreateMap<Result,View_Result>();
-            CreateMap<AddResult,Result>();
+            CreateMap<AddResult, Result>()
+                .ForMember(dest => dest.ObtainedPercentage, opt => opt.MapFrom(src => (src.TotalMarks / src.MarksObtained) * 100))
+                .ForMember(dest => dest.GradeObtained, opt => opt.MapFrom(src => CommanFunctions.Grade((src.TotalMarks / src.MarksObtained) * 100)));
+
         }
     }
 }
