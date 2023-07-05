@@ -34,7 +34,7 @@ namespace OnlineExaminationSystem_Back_End_DAL.Controllers
         }
         //course by the id
         [HttpGet("[action]/{id}")]
-        [AllowAnonymous]
+        [Authorize]
         public async Task<ActionResult> FindCourse(Guid id)
         {
             var course = await _dbContext.Courses.FindAsync(id);

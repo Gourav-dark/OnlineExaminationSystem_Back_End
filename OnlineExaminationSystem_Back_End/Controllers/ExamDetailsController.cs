@@ -56,7 +56,7 @@ namespace OnlineExaminationSystem_Back_End_DAL.Controllers
             {
                 return Ok(examlist);
             }
-            return NotFound("There is no exam.Please Add New.");
+            return NotFound("There is no exam.");
         }
 
         // get Exam By Id
