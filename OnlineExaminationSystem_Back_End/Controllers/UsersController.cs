@@ -241,10 +241,19 @@ namespace OnlineExaminationSystem_Back_End_DAL.Controllers
             {
                 return NotFound("User Id Not Valid");
             }
-            user.Status = true;
+            user.Status = !user.Status;
+            string status = "";
+            if (user.Status)
+            {
+                status = "Active";
+            }
+            else
+            {
+                status = "Deactive";
+            }
             await _dbContext.SaveChangesAsync();
-            var viewuser=_mapper.Map<ViewUser>(user);
-            return Ok(viewuser);
+            //var viewuser=_mapper.Map<ViewUser>(user);
+            return Ok("User is "+status);
         }
     }
 }
