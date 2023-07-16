@@ -118,8 +118,19 @@ namespace OnlineExaminationSystem_Back_End_DAL.Controllers
         [HttpPost]
         [Authorize]
         [Route("[Action]")]
-        public async Task<ActionResult> AddResult(Guid sId,Guid eId,AddResult result)
+        public async Task<ActionResult> GenerateResult(Guid sId,Guid eId,List<ViewQuestion> questions)
         {
+            AddResult result =new AddResult();
+            result.TotalMarks = 0;
+            result.MarksObtained = 0;
+            foreach (ViewQuestion question in questions)
+            {
+                var tempQuestion=await _dbContext.Questions.FindAsync(question.Id);
+                if(tempQuestion.CorrectOption==question.CorrectOption) {
+                    result.MarksObtained += tempQuestion.Mark;
+                }
+                result.TotalMarks += tempQuestion.Mark;
+            }
             var addResult = _mapper.Map<Result>(result);
             addResult.StudentId = sId;
             addResult.ExamId = eId;

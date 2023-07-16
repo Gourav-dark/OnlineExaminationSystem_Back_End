@@ -1,4 +1,4 @@
-﻿using System;
+﻿  using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -37,8 +37,7 @@ namespace OnlineExaminationSystem_Back_End_DAL.Controllers
             {
                 return NotFound();
             }
-            return Ok(await _dbcontext.Questions.Select(q=>_mapper.Map<ViewQuestion>(q)).ToListAsync());
-            
+            return Ok(await _dbcontext.Questions.Select(q=>_mapper.Map<ViewQuestion>(q)).ToListAsync());            
         }
 
         // Question By Question Id
